@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Опросник</title>
+<link rel="stylesheet" href="styles.css">
+
+<head>
+  <title>Random Name and Question</title>
+
+  <script src="data.js"></script>
+</head>
+
+
+<body onload="Init()">
+  <h1>Random Name and Question</h1>
+  <h1>Выберите группу:</h1>
+  <select id="groupSelect" onchange="loadNames()">
+    <option value="">Выберите группу</option>
+  </select>
+  <select id="groupQuestionSelect" onchange="loadQuestions()">
+    <option value="">Выберите группу вопросов</option>
+  </select>
+  <table style="visibility:collapse;">
+    <tr>
+      <td>
+        <label for="namesTextArea">Names:</label>
+        <textarea id="namesTextArea" rows="30" cols="100"></textarea>
+      </td>
+      <td>
+        <label for="questionsTextArea">Questions:</label>
+        <textarea id="questionsTextArea" rows="30" cols="100"></textarea>
+      </td>
+    </tr>
+  </table>
+  <br><br>
+  <table>
+    <tr>
+      <td id="randomNameLabel">Random Name:
+      </td>
+
+      <td id="randomQuestionLabel">Random Question:
+      </td>
+
+    </tr>
+  </table>
+  <button id="randomNameButton">Random Name</button>
+  <button id="randomQuestionButton">Random Question</button>
+  <label id="randomNameChoice"></label>
+  <label id="randomQuestionChoice"></label>
+  <textarea id="tableTasks" rows="30" cols="60" value="">
+
+  </textarea>
+  <script src="script.js">
+
+
+
+  </script>
+</body>
+
+</html>
