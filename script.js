@@ -23,15 +23,16 @@ function Init() {
         });
 }
 
-let names = '';
+let names=[];
 function loadNames() {
     let select = document.getElementById("groupSelect");
-    names = '';
+    names = [];
     let namesCheckboxList = '';
     let i = 0;
     data[select.value].Names.forEach(element => {
-        i++;
         namesCheckboxList += '<label for="nameCheckbox' + i + '"><input type="checkbox" checked id="nameCheckbox' + i + '" value="' + element + '">' + element + '</label>';
+        names.push(element);
+        i++;
     });
     document.getElementById('randomNameLabel').innerHTML = 'Random Name:';
     document.getElementById('randomNameButton').disabled = false;
@@ -47,9 +48,9 @@ function loadQuestions() {
     let j = 0;
     let questionsCheckboxList = '';
     dataQuestions[select.value].questions.forEach(element => {
-        j++;
         questions.push(element);
         questionsCheckboxList += '<label for="questionCheckbox' + (j) + '"><input type="checkbox" checked id="questionCheckbox' + (j) + '" value="' + element + '">' + element + '</label>';
+        j++;
     })
     document.getElementById('randomQuestionLabel').innerHTML = '<div id="questionsCheckboxList">' + questionsCheckboxList + '</div>';
 }
@@ -71,7 +72,7 @@ function randomFunction() {
 
 document.getElementById('randomNameButton').addEventListener('click', function () {
     var NameCheckboxes = []
-    let max = parseInt(this.getAttribute('max'))
+    let max = parseInt(names.length)
     for (let i = 0; i < max; i++)
         if (document.getElementById('nameCheckbox' + i).checked)
             NameCheckboxes.push(document.getElementById('nameCheckbox' + i));
@@ -91,7 +92,7 @@ document.getElementById('randomNameButton').addEventListener('click', function (
 
 document.getElementById('randomQuestionButton').addEventListener('click', function () {
     var QuestionCheckboxes = [];
-    let max = parseInt(this.getAttribute('max'));
+    let max = parseInt(questions.length);
     for (let i = 0; i < max; i++)
         if (document.getElementById('questionCheckbox' + i).checked)
             QuestionCheckboxes.push(document.getElementById('questionCheckbox' + i));
