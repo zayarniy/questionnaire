@@ -6,6 +6,7 @@ function Init() {
     data.forEach(
         function (group) {
             var option = document.createElement("option");
+
             option.text = group.groupName;
             option.value = i++;
             select.add(option);
@@ -23,14 +24,14 @@ function Init() {
         });
 }
 
-let names=[];
+let names = [];
 function loadNames() {
     let select = document.getElementById("groupSelect");
     names = [];
     let namesCheckboxList = '';
     let i = 0;
     data[select.value].Names.forEach(element => {
-        namesCheckboxList += '<label for="nameCheckbox' + i + '"><input type="checkbox" checked id="nameCheckbox' + i + '" value="' + element + '">' + element + '</label>';
+        namesCheckboxList += '<label for="nameCheckbox' + i + '"><input type="checkbox" checked id="nameCheckbox' + i + '" value="' + element + '"><button onclick="selectName(\'' + element + '\')">' + element + '</button></label>';
         names.push(element);
         i++;
     });
@@ -41,6 +42,19 @@ function loadNames() {
     document.getElementById('randomNameLabel').innerHTML = '<div id="namesCheckboxList">' + namesCheckboxList + '</div>';
 }
 
+function selectName(name) {
+    document.getElementById('tableTasks').value += name + '\n';
+}
+
+function selectQuestion(question) {
+    document.getElementById('tableTasks').value += question + '\n';
+}
+
+function clearArea() {
+    document.getElementById('tableTasks').value = '';
+}
+
+
 let questions = [];
 function loadQuestions() {
     let select = document.getElementById("groupQuestionSelect");
@@ -49,7 +63,7 @@ function loadQuestions() {
     let questionsCheckboxList = '';
     dataQuestions[select.value].questions.forEach(element => {
         questions.push(element);
-        questionsCheckboxList += '<label for="questionCheckbox' + (j) + '"><input type="checkbox" checked id="questionCheckbox' + (j) + '" value="' + element + '">' + element + '</label>';
+        questionsCheckboxList += '<label for="questionCheckbox' + (j) + '"><input type="checkbox" checked id="questionCheckbox' + (j) + '" value="' + element + '"><button onclick="selectQuestion(\'' + element + '\')">' + element + '</button></label>';
         j++;
     })
     document.getElementById('randomQuestionLabel').innerHTML = '<div id="questionsCheckboxList">' + questionsCheckboxList + '</div>';
