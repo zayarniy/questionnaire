@@ -21,6 +21,7 @@ function Init() {
             option.text = groupQuest.groupName;
             option.value = i++;
             selectQuest.add(option);
+            
         });
 }
 
@@ -48,6 +49,7 @@ function selectName(name) {
 
 function selectQuestion(question) {
     document.getElementById('tableTasks').value += question + '\n';
+    speak(question);
 }
 
 function clearArea() {
